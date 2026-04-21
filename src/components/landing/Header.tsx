@@ -93,9 +93,10 @@ const Header = () => {
             onClick={scrollToForm}
             background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
             shimmerColor="#ffffff"
-            className="w-full sm:w-auto max-w-[260px] sm:max-w-none text-xs sm:text-sm font-semibold px-4 py-2 whitespace-normal sm:whitespace-nowrap leading-tight text-center"
+            className="w-full sm:w-auto max-w-[260px] sm:max-w-none text-xs sm:text-sm font-semibold px-4 py-2 text-center"
           >
-            Recevoir des profils qualifiés
+            <span className="sm:hidden">Recevoir des profils</span>
+            <span className="hidden sm:inline">Recevoir des profils qualifiés</span>
           </ShimmerButton>
         </div>
       </div>
