@@ -63,14 +63,15 @@ const FinalCTA = () => {
             </div>
           </div>
           
-          <div className="flex justify-center pt-4">
+          <div className="flex flex-col items-center gap-4 pt-4">
+            <p className="body-lg text-white">Prêt à accélérer votre recrutement ?</p>
             <ShimmerButton
               onClick={openContactForm}
               background="#ffffff"
               shimmerColor="rgba(0,0,0,0.1)"
               className="text-primary font-bold text-lg px-8 py-4 flex items-center gap-2 hover:scale-105 transition-transform max-w-max"
             >
-              Prêt à accélérer votre recrutement ? Échangeons
+              Échangeons
               <ArrowRight className="w-5 h-5 ml-2" />
             </ShimmerButton>
           </div>
