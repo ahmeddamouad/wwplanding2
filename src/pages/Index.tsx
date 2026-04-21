@@ -19,15 +19,15 @@ const Index = () => {
         <Header />
         <main className="overflow-x-hidden">
           <Hero />
-          <PainPoints />
-          <CandidatesTimeline />
-          <RecruitmentExpress />
-          <Methodology />
-          <PricingLogic />
-          <Differentiation />
-          <FinalCTA />
-          <TrustedCompanies />
-          <ContactFormSection />
+        <PainPoints />
+        <CandidatesTimeline />
+        <RecruitmentExpress />
+        <Methodology />
+        <PricingLogic />
+        <Differentiation />
+        <FinalCTA />
+        <TrustedCompanies />
+        <ContactFormSection />
         </main>
         <Footer />
       </div>
