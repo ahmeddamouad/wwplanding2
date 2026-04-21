@@ -5,7 +5,7 @@ interface ZigzagSectionProps {
   title: string;
   subtitle?: string;
   children: ReactNode;
-  illustration: ReactNode;
+  illustration: ReactNode | string;
   reverse?: boolean;
   bgColor?: 'background' | 'secondary';
 }
@@ -43,7 +43,19 @@ const ZigzagSection = ({
 
           {/* Illustration */}
           <div className={`relative ${reverse ? 'lg:order-1' : 'lg:order-2'}`}>
-            {illustration}
+            {typeof illustration === 'string' ? (
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src={illustration}
+                  alt={title}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+            ) : (
+              illustration
+            )}
           </div>
         </div>
       </div>
