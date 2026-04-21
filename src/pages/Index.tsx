@@ -9,15 +9,12 @@ import Differentiation from '@/components/landing/Differentiation';
 import FinalCTA from '@/components/landing/FinalCTA';
 import TrustedCompanies from '@/components/landing/TrustedCompanies';
 import ContactFormSection from '@/components/landing/ContactFormSection';
-import ContactFormDialog from '@/components/landing/ContactFormDialog';
 import Footer from '@/components/landing/Footer';
-import { ContactFormProvider, useContactForm } from '@/contexts/ContactFormContext';
+import { ContactFormProvider } from '@/contexts/ContactFormContext';
 
-const IndexContent = () => {
-  const { isOpen, setIsOpen } = useContactForm();
-
+const Index = () => {
   return (
-    <>
+    <ContactFormProvider>
       <div className="min-h-screen overflow-x-hidden">
         <Header />
         <main className="overflow-x-hidden">
@@ -34,15 +31,6 @@ const IndexContent = () => {
         </main>
         <Footer />
       </div>
-      <ContactFormDialog open={isOpen} onOpenChange={setIsOpen} />
-    </>
-  );
-};
-
-const Index = () => {
-  return (
-    <ContactFormProvider>
-      <IndexContent />
     </ContactFormProvider>
   );
 };
