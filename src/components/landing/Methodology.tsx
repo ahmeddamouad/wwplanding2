@@ -1,58 +1,49 @@
+import { CheckCircle2 } from 'lucide-react';
 import ZigzagSection from './ZigzagSection';
-import { Shield, TrendingUp, Award, FileCheck } from 'lucide-react';
-import sectionImage from '@/assets/section-methodology.jpg';
+import methodologyImage from '@/assets/section-methodology.jpg';
 
 const Methodology = () => {
-  const guarantees = [
+  const steps = [
     {
-      icon: Shield,
-      title: 'Garantie de remplacement 3 mois',
+      title: 'Shortlist qualifiée dans les délais annoncés',
+      description: 'Uniquement des candidats correspondant précisément au profil recherché, livrés dans le délai convenu.'
     },
     {
-      icon: TrendingUp,
-      title: 'Taux de réussite élevé',
+      title: 'Candidats préqualifiés & évalués',
+      description: 'Chaque profil a été sélectionné, interviewé et évalué par nos consultants avant transmission.'
     },
     {
-      icon: Award,
-      title: 'Références sectorielles',
+      title: 'Compte rendu d\'entretien structuré',
+      description: 'Un document complet pour vous aider à prendre votre décision rapidement et en toute confiance.'
     },
     {
-      icon: FileCheck,
-      title: 'Processus transparent',
-    },
+      title: 'Prise de références & accompagnement',
+      description: 'Vérification des références si nécessaire, et suivi jusqu\'à l\'intégration réussie du candidat'
+    }
   ];
 
   return (
     <ZigzagSection
-      id="garantie"
-      title="Un recrutement sans risque, c'est possible"
-      subtitle="Afin de garantir la sérénité de votre esprit, nous vous offrons :"
-      reverse={true}
+      id="engagement-qualite"
+      title="Ce que WWP s'engage à délivrer"
+      subtitle="Chaque mission est portée par une exigence de qualité et de transparence. Voici ce que vous recevez à chaque recrutement :"
+      illustration={methodologyImage}
+      reverse={false}
       bgColor="background"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="Partenariat de confiance" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
     >
-      <div className="space-y-4">
-        {guarantees.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20"
-          >
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <item.icon className="w-5 h-5 text-primary" />
+      <ul className="space-y-6">
+        {steps.map((step, index) => (
+          <li key={index} className="flex gap-4">
+            <div className="flex-shrink-0 mt-1">
+              <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
-            <p className="font-semibold text-foreground">{item.title}</p>
-          </div>
+            <div>
+              <h3 className="heading-sm text-foreground mb-1">{step.title}</h3>
+              <p className="body-sm text-muted-foreground">{step.description}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </ZigzagSection>
   );
 };

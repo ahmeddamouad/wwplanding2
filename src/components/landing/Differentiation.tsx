@@ -1,61 +1,70 @@
+import { CheckCircle2, XCircle } from 'lucide-react';
+import bgImage from '@/assets/section-methodology.jpg';
 import ZigzagSection from './ZigzagSection';
-import { Check, X } from 'lucide-react';
-import sectionImage from '@/assets/section-differentiation.jpg';
 
 const Differentiation = () => {
   return (
     <ZigzagSection
-      title="Comment nous vous trouvons le meilleur employé"
+      id="differentiation"
+      title="WWP vs. les cabinets classiques"
+      subtitle="Ce qui distingue fondamentalement notre approche de celle des cabinets traditionnels :"
+      illustration={bgImage}
       reverse={false}
-      bgColor="secondary"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="Équipe de recrutement professionnelle" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
+      bgColor="background"
     >
-      <div className="space-y-6">
-        {/* What we deliver */}
-        <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
-          <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
-            <Check className="w-5 h-5 text-primary" />
-            Nous livrons rapidement :
-          </h3>
-          <ul className="space-y-2 ml-7">
-            <li className="text-sm text-muted-foreground flex items-start gap-2">
-              <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-              Des candidats en veille ou en recherche active (Ils sont prêts à travailler pour vous)
+      {/* We overlay the two columns as content */}
+      <div className="grid md:grid-cols-2 gap-6 relative z-10 w-full overflow-hidden max-w-full">
+        {/* Classique Column */}
+        <div className="bg-secondary p-6 rounded-xl border border-border/50">
+          <h3 className="heading-sm text-foreground mb-4 text-center">Cabinets classiques</h3>
+          <ul className="space-y-4">
+            <li className="flex gap-3">
+              <span className="text-red-500 mt-1 flex-shrink-0"><XCircle className="w-5 h-5" /></span>
+              <p className="body-sm text-muted-foreground break-words">Process longs de 4 à 8 semaines</p>
             </li>
-            <li className="text-sm text-muted-foreground flex items-start gap-2">
-              <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-              Évalués humainement et professionnellement
+            <li className="flex gap-3">
+              <span className="text-red-500 mt-1 flex-shrink-0"><XCircle className="w-5 h-5" /></span>
+              <p className="body-sm text-muted-foreground break-words">Tri fastidieux de nombreux CV</p>
             </li>
-            <li className="text-sm text-muted-foreground flex items-start gap-2">
-              <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-              Adaptés à votre secteur d'activité
+            <li className="flex gap-3">
+              <span className="text-red-500 mt-1 flex-shrink-0"><XCircle className="w-5 h-5" /></span>
+              <p className="body-sm text-muted-foreground break-words">Peu adaptés aux secteurs en tension</p>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-red-500 mt-1 flex-shrink-0"><XCircle className="w-5 h-5" /></span>
+              <p className="body-sm text-muted-foreground break-words">Approche standardisée</p>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-red-500 mt-1 flex-shrink-0"><XCircle className="w-5 h-5" /></span>
+              <p className="body-sm text-muted-foreground break-words">Facturation même sans résultat</p>
             </li>
           </ul>
         </div>
 
-        {/* What we don't sell */}
-        <div className="bg-destructive/5 rounded-xl p-5 border border-destructive/20">
-          <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
-            <X className="w-5 h-5 text-destructive" />
-            Nous ne proposons jamais :
-          </h3>
-          <ul className="space-y-2 ml-7">
-            <li className="text-sm text-muted-foreground flex items-start gap-2">
-              <X className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
-              Des packs de CV non filtrés
+        {/* WWP Column */}
+        <div className="bg-primary text-primary-foreground p-6 rounded-xl shadow-lg relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10" />
+          <h3 className="heading-sm text-white mb-4 text-center relative z-10">WWP — Recruitment Express</h3>
+          <ul className="space-y-4 relative z-10">
+            <li className="flex gap-3">
+              <span className="text-white mt-1 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
+              <p className="body-sm text-white/90 break-words">Délais courts : 1 à 2 semaines garantis</p>
             </li>
-            <li className="text-sm text-muted-foreground flex items-start gap-2">
-              <X className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
-              Des profils génériques sans valeur ajoutée
+            <li className="flex gap-3">
+              <span className="text-white mt-1 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
+              <p className="body-sm text-white/90 break-words">Candidats déjà qualifiés et évalués</p>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-white mt-1 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
+              <p className="body-sm text-white/90 break-words">Spécialisation énergie, retail, logistique</p>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-white mt-1 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
+              <p className="body-sm text-white/90 break-words">Méthode structurée + compréhension des métiers</p>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-white mt-1 flex-shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
+              <p className="body-sm text-white/90 break-words">Paiement au succès uniquement</p>
             </li>
           </ul>
         </div>

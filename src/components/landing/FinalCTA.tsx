@@ -1,54 +1,83 @@
-import ZigzagSection from './ZigzagSection';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import sectionImage from '@/assets/section-finalcta.jpg';
+import finalbgImage from '@/assets/section-finalcta.jpg';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 const FinalCTA = () => {
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const { openContactForm } = useContactForm();
 
   return (
-    <ZigzagSection
-      id="contact"
-      title="Votre nouvel employé est la clé cachée d'une croissance rapide"
-      reverse={false}
-      bgColor="secondary"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="Croissance et succès" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
-    >
-      <div className="space-y-6">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <CheckCircle className="w-4 h-4 text-primary" />
-            <span>Sans engagement</span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <CheckCircle className="w-4 h-4 text-primary" />
-            <span>Réponse rapide</span>
-          </div>
-        </div>
-
-        <ShimmerButton
-          onClick={scrollToForm}
-          background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
-          shimmerColor="#ffffff"
-          className="w-full sm:w-auto text-sm sm:text-base font-semibold flex items-center justify-center gap-2 px-4 py-3"
-        >
-          <span className="text-center">Recevoir des profils qualifiés</span>
-          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-        </ShimmerButton>
+    <section className="relative py-20 md:py-32 overflow-hidden bg-primary w-full">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={finalbgImage} 
+          alt="Recrutement accéléré avec WWP" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/90" />
       </div>
-    </ZigzagSection>
+
+      <div className="container-custom relative z-10 w-full">
+        <div className="max-w-4xl mx-auto text-center space-y-8 text-primary-foreground">
+          
+          <h2 className="heading-xl text-white break-words">
+            WWP ne vend pas du recrutement.
+            <br />
+            WWP vous aide à recruter mieux, plus vite.
+          </h2>
+          
+          <p className="body-lg text-primary-foreground/90 max-w-2xl mx-auto break-words">
+            Rejoignez les PME françaises qui font confiance à WWP pour trouver les profils qui font vraiment la différence — dans le retail, la logistique, les startups et les énergies renouvelables.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 text-left my-10 max-w-5xl mx-auto w-full">
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+              <div className="flex items-center gap-3 mb-2">
+                <CheckCircle2 className="text-white w-5 h-5 flex-shrink-0" />
+                <h3 className="font-bold text-white text-lg">Réactivité</h3>
+              </div>
+              <p className="text-primary-foreground/90 text-sm">
+                Shortlist en 1 à 2 semaines, profils prêts à rencontrer votre équipe.
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+              <div className="flex items-center gap-3 mb-2">
+                <CheckCircle2 className="text-white w-5 h-5 flex-shrink-0" />
+                <h3 className="font-bold text-white text-lg">Qualité</h3>
+              </div>
+              <p className="text-primary-foreground/90 text-sm">
+                Candidats évalués, référencés, accompagnés jusqu&apos;à l&apos;intégration.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+              <div className="flex items-center gap-3 mb-2">
+                <CheckCircle2 className="text-white w-5 h-5 flex-shrink-0" />
+                <h3 className="font-bold text-white text-lg">Zéro risque</h3>
+              </div>
+              <p className="text-primary-foreground/90 text-sm">
+                Paiement au succès, garantie 3 mois, offre de lancement avantageuse.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex justify-center pt-4">
+            <ShimmerButton
+              onClick={openContactForm}
+              background="#ffffff"
+              shimmerColor="rgba(0,0,0,0.1)"
+              className="text-primary font-bold text-lg px-8 py-4 flex items-center gap-2 hover:scale-105 transition-transform max-w-max"
+            >
+              Prêt à accélérer votre recrutement ? Échangeons
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </ShimmerButton>
+          </div>
+          
+        </div>
+      </div>
+    </section>
   );
 };
 

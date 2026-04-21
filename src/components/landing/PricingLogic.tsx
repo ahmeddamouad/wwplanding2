@@ -1,58 +1,51 @@
 import ZigzagSection from './ZigzagSection';
-import { Wallet, CheckCircle, Clock } from 'lucide-react';
-import sectionImage from '@/assets/section-pricing.jpg';
+import pricingImage from '@/assets/section-pricing.jpg';
+import { Check } from 'lucide-react';
 
 const PricingLogic = () => {
-  const benefits = [
-    {
-      icon: Wallet,
-      title: 'Prix standard pour tous les besoins de recrutement',
-      description: 'Pas de frais cachés',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Expertise incluse',
-      description: 'Assure votre retour sur investissement',
-    },
-    {
-      icon: Clock,
-      title: '2 semaines pour livrer',
-      description: 'Vous évitez de perdre du temps et surtout 3 mois de salaire sur le mauvais profil',
-    },
-  ];
-
   return (
     <ZigzagSection
-      title="Probablement le meilleur rapport qualité prix du marché"
-      subtitle="La relation avec nos clients dure en moyenne 2-3 ans, tout simplement grâce à une offre juste et à fort impact."
+      id="investissement"
+      title="Un investissement clair, sans risque financier"
+      illustration={pricingImage}
       reverse={true}
-      bgColor="background"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="Partenariat d'affaires" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
+      bgColor="secondary"
     >
-      <div className="space-y-4">
-        {benefits.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20"
-          >
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <item.icon className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <p className="font-semibold text-foreground">{item.title}</p>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
-            </div>
-          </div>
-        ))}
+      <div className="space-y-8">
+        <div className="bg-background border border-border p-6 rounded-xl shadow-sm">
+          <h3 className="heading-md text-foreground mb-4">Structure tarifaire</h3>
+          <ul className="space-y-3">
+            <li className="flex items-center gap-3 text-muted-foreground body-md">
+              <Check className="w-5 h-5 text-primary flex-shrink-0" />
+              <span>12% à 15% du salaire brut annuel</span>
+            </li>
+            <li className="flex items-center gap-3 text-muted-foreground body-md">
+              <Check className="w-5 h-5 text-primary flex-shrink-0" />
+              <span>Paiement au succès uniquement</span>
+            </li>
+            <li className="flex items-center gap-3 text-muted-foreground body-md">
+              <Check className="w-5 h-5 text-primary flex-shrink-0" />
+              <span>Garantie de remplacement : 3 mois</span>
+            </li>
+            <li className="flex items-center gap-3 text-muted-foreground body-md font-medium text-foreground">
+              <Check className="w-5 h-5 text-primary flex-shrink-0" />
+              <span>Sans succès = aucune facturation</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div className="bg-accent/10 border-l-4 border-accent p-5 rounded-r-xl">
+          <h4 className="heading-sm text-foreground mb-2">Offre de lancement</h4>
+          <p className="body-sm text-muted-foreground">
+            Pour les nouveaux partenaires, WWP propose un tarif préférentiel sur le 1er recrutement.
+            Une occasion de tester notre méthode, notre réactivité et la qualité de nos profils —
+            sans engagement financier en cas d&apos;échec.
+          </p>
+        </div>
+
+        <div className="bg-primary text-primary-foreground p-4 rounded-xl font-semibold text-center mt-6">
+          Zéro risque financier. Vous ne payez que si vous embauchez
+        </div>
       </div>
     </ZigzagSection>
   );
