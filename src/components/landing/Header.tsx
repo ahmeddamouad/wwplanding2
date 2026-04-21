@@ -50,7 +50,7 @@ const Header = () => {
             : 'bg-background py-3'
         }`}
       >
-      <div className="container-custom relative flex items-center justify-between">
+      <div className="container-custom relative flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         {/* Logo - left aligned when CTA shows, centered when CTA is hidden */}
         <div className={`flex items-center transition-all duration-300 ${
           showCTA ? '' : 'flex-1 justify-center'
@@ -86,16 +86,17 @@ const Header = () => {
         </div>
 
         {/* Mobile CTA Button */}
-        <div className={`lg:hidden transition-opacity duration-300 ${
+        <div className={`lg:hidden w-full sm:w-auto flex justify-center sm:justify-end transition-opacity duration-300 ${
           showCTA ? 'opacity-100' : 'opacity-0 pointer-events-none absolute right-0'
         }`}>
           <ShimmerButton 
             onClick={scrollToForm}
             background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
             shimmerColor="#ffffff"
-            className="text-sm font-semibold px-4 py-2"
+            className="w-full sm:w-auto max-w-[260px] sm:max-w-none text-xs sm:text-sm font-semibold px-4 py-2 text-center"
           >
-            Recevoir des profils qualifiés
+            <span className="sm:hidden">Recevoir des profils</span>
+            <span className="hidden sm:inline">Recevoir des profils qualifiés</span>
           </ShimmerButton>
         </div>
       </div>
