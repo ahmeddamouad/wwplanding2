@@ -9,28 +9,40 @@ import Differentiation from '@/components/landing/Differentiation';
 import FinalCTA from '@/components/landing/FinalCTA';
 import TrustedCompanies from '@/components/landing/TrustedCompanies';
 import ContactFormSection from '@/components/landing/ContactFormSection';
+import ContactFormDialog from '@/components/landing/ContactFormDialog';
 import Footer from '@/components/landing/Footer';
-import { ContactFormProvider } from '@/contexts/ContactFormContext';
+import { ContactFormProvider, useContactForm } from '@/contexts/ContactFormContext';
 
-const Index = () => {
+const IndexContent = () => {
+  const { isOpen, setIsOpen } = useContactForm();
+
   return (
-    <ContactFormProvider>
+    <>
       <div className="min-h-screen overflow-x-hidden">
         <Header />
         <main className="overflow-x-hidden">
           <Hero />
-        <PainPoints />
-        <CandidatesTimeline />
-        <RecruitmentExpress />
-        <Methodology />
-        <PricingLogic />
-        <Differentiation />
-        <FinalCTA />
-        <TrustedCompanies />
-        <ContactFormSection />
+          <PainPoints />
+          <CandidatesTimeline />
+          <RecruitmentExpress />
+          <Methodology />
+          <PricingLogic />
+          <Differentiation />
+          <FinalCTA />
+          <TrustedCompanies />
+          <ContactFormSection />
         </main>
         <Footer />
       </div>
+      <ContactFormDialog open={isOpen} onOpenChange={setIsOpen} />
+    </>
+  );
+};
+
+const Index = () => {
+  return (
+    <ContactFormProvider>
+      <IndexContent />
     </ContactFormProvider>
   );
 };
