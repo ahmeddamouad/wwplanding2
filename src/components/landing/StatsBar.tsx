@@ -68,7 +68,7 @@ const StatsBar = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <StatItem
-              key={`${stat.label}-${stat.value}`}
+              key={index}
               stat={stat}
               index={index}
               isVisible={isVisible}
