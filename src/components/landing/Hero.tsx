@@ -1,10 +1,12 @@
 import { ArrowRight, Clock, Shield, Users } from 'lucide-react';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import heroImage from '@/assets/section-hero.jpg';
-import { useContactForm } from '@/contexts/ContactFormContext';
 
 const Hero = () => {
-  const { openContactForm } = useContactForm();
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <section className="relative lg:min-h-screen flex items-start lg:items-center bg-gradient-to-br from-secondary via-background to-primary/5 pt-20 md:pt-32 pb-12 md:pb-16 w-full overflow-hidden">
@@ -26,7 +28,7 @@ const Hero = () => {
             </div>
 
             <ShimmerButton
-              onClick={openContactForm}
+              onClick={scrollToForm}
               background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
               shimmerColor="#ffffff"
               className="w-full sm:w-auto text-base font-semibold flex items-center justify-center gap-2 max-w-max px-6 py-2.5"

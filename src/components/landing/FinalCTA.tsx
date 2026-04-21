@@ -1,10 +1,12 @@
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import finalbgImage from '@/assets/section-finalcta.jpg';
-import { useContactForm } from '@/contexts/ContactFormContext';
 
 const FinalCTA = () => {
-  const { openContactForm } = useContactForm();
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden bg-primary w-full">
@@ -66,7 +68,7 @@ const FinalCTA = () => {
           <div className="flex flex-col items-center gap-4 pt-4">
             <p className="body-lg text-white">Prêt à accélérer votre recrutement ?</p>
             <ShimmerButton
-              onClick={openContactForm}
+              onClick={scrollToForm}
               background="#ffffff"
               shimmerColor="rgba(0,0,0,0.1)"
               className="text-primary font-bold text-lg px-8 py-4 flex items-center gap-2 hover:scale-105 transition-transform max-w-max"
