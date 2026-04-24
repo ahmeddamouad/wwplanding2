@@ -17,6 +17,28 @@ This project is built with:
 ## Getting Started
 
 ### Prerequisites
+- Node.js & npm
+
+### Environment Variables (EmailJS & Tracking)
+
+Create a `.env.local` file in the root directory and add the following keys to configure EmailJS and Meta Pixel:
+
+```bash
+# EmailJS configuration (Required for contact form)
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Tracking configuration (Optional)
+VITE_META_PIXEL_ID=your_pixel_id
+```
+
+**Troubleshooting EmailJS:**
+- If the form shows "Le service de messagerie n'est pas correctement configuré", verify the variables above are present.
+- If it shows "Impossible d'envoyer le message", log into the EmailJS dashboard to verify your template parameters and quota.
+- Retries with exponential backoff are automatically handled by `emailService.ts` on temporary network disconnections.
+
+### Setup
 
 - Node.js 18+ and npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 

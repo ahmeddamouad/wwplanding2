@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { sendContactEmail, EmailServiceError } from '@/lib/emailService';
 import videoFile from '@/assets/Recrutement_Réussi_au_Maroc.mp4';
 import pdfFile from '@/assets/Checklist Recrutement WWP.pdf';
 
@@ -43,32 +44,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     setIsSubmitting(true);
 
     try {
-      const payload = {
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        message: formData.message,
-        timestamp: new Date().toISOString()
-      };
-
-      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
-
-      if (!webhookUrl) {
-        throw new Error('Webhook URL not configured');
-      }
-
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error('Submission failed');
-      }
+      await sendContactEmail(formData);
 
       setIsSubmitted(true);
       setFormData({
@@ -80,10 +56,28 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
       });
     } catch (error) {
       console.error('Form submission error:', error);
+      
+      let errorDescription = 'Une erreur inattendue s\'est produite. Veuillez réessayer.';
+      
+      if (error instanceof EmailServiceError) {
+        if (error.type === 'CONFIG_MISSING') {
+          errorDescription = 'Le service de messagerie n\'est pas correctement configuré.';
+        } else if (error.type === 'NETWORK_ERROR') {
+          errorDescription = 'Problème de connexion. Veuillez vérifier votre connexion et réessayer.';
+        } else if (error.type === 'PROVIDER_REJECTED') {
+          if (error.message.toLowerCase().includes('activation')) {
+            errorDescription = 'Formulaire en cours d\'activation. Vérifiez votre e-mail et cliquez sur le lien d\'activation, puis réessayez.';
+          } else {
+            errorDescription = 'Impossible d\'envoyer le message. Veuillez vérifier les informations et réessayer.';
+          }
+        }
+      }
+
       toast({
-        title: 'Erreur',
-        description: 'Une erreur s\'est produite. Veuillez réessayer.',
+        title: 'Erreur d\'envoi',
+        description: errorDescription,
         variant: 'destructive',
+        duration: 5000,
       });
     } finally {
       setIsSubmitting(false);
